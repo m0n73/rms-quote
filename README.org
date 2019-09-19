@@ -14,5 +14,9 @@ Add the following lines to your emacs init:
 #+END_SRC
 
 NOTE: This package binds two functions to keys. Modify those lines if these bindings clash with your current setup.
-=C-h C-y= to add current line to the quotes.
-=C-h C-u= to enjoy yet another pearl from RMS. 
+
+** Usage
+
+=C-h C-y= to add current line to the quote list.
+
+=C-h C-u= to recieve a pearl of wisdom. 
