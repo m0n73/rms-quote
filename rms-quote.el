@@ -42,7 +42,7 @@
 
 (random t)
 (setq quotes-list-file
-      "~/.emacs.d/rms-quote/rms-quotes.list")
+      "rms-quotes.list")
 
 (defun read-rms-quotes(path)
   "Read quotes from PATH into a list."
