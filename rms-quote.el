@@ -2,74 +2,76 @@
 
 ;;  Copyright (C) 2019 by m0nt3
 
-;;  Author:     m0nt3
+;;  Author:     m0nt3 <m0nt3@protonmail.com>
 ;;  Created     19 Sep 2019
 ;;  Name:       rms-quote
 ;;  Version:    0.1.2
 ;;  Keywords:   RMS Stallman wisdom sex parrot
 ;;  License:    GPL v3
+;;  URL:        https://github.com/m0n73/rms-quote
 ;;  Package-Requires: ((emacs "24.1"))
 
 ;;  This file is not part of GNU Emacs.
 
 ;;; Commentary:
 
-;;  This packages introduces a bit of wisdom into
+;;  This package introduces a bit of wisdom into
 ;;  your workflow: a random quote by our beloved
-;;  RMS on sensitive subjects. Don't see a quote
+;;  RMS on sensitive subjects.  Don't see a quote
 ;;  you love? No problem -- adding a quote is as
 ;;  easy as "C-h C-y".
-;;  NOTE: This package binds two functions to 
-;;  keys. Modify those lines if these bindings
-;;  clash with your current setup.
+
+;;  rms-quote - messages out a pearl of wisdom from RMS.
+;;  rms-quote-add - adds the current line to the quotes.
 
 ;;;  Install:
 
 ;;  Place rms-quote.el and rms-quotes.list
 ;;  in "~/.emacs.d/rms-quote/".
-;;
+
 ;;  Add the following to your emacs init:
 ;;  (add-to-list 'load-path "~/.emacs.d/rms-quote")
 ;;  (require 'rms-quote)
-;;
-;;  "C-h C-y" to add current line to the quotes.
-;;  "C-h C-u" to enjoy yet another pearl from RMS. 
-;;
+
+;;  Add your personal keybindings. I use:
+
+;;  (global-set-key (kbd "C-h C-u") 'rms-quote)
+;;  (global-set-key (kbd "C-h C-y") 'rms-quote-add)
+
+;;; Code:
 
 (random t)
-(setq quotes-list-file 
+(setq quotes-list-file
       "~/.emacs.d/rms-quote/rms-quotes.list")
 
 (defun read-rms-quotes(path)
-  "Read quotes from 'path' into a list"
-  (with-temp-buffer 
+  "Read quotes from PATH into a list."
+  (with-temp-buffer
     (insert-file-contents path)
     (split-string (buffer-string) "\n" t)))
 
 (defun rms-qstr-add(path qstr)
-  "Save 'qstr' into a file 'path'"
-  (when (y-or-n-p "Add current line to RMS quotes?")
+  "Save QSTR into a file PATH."
+  (when (y-or-n-p "Add current line to RMS quotes? ")
     (write-region qstr nil path t)))
 
-(setq rms-quotes-list 
+(setq rms-quotes-list
       (read-rms-quotes quotes-list-file))
 
 (defun rms-quote()
-  "Enjoy another fantastic quote by RMS"
+  "Enjoy another fantastic quote by RMS."
   (interactive)
-  (message (nth 
-             (random 
-             (length rms-quotes-list)) 
+  (message (nth
+             (random
+             (length rms-quotes-list))
             rms-quotes-list)))
 
 (defun rms-quote-add()
   "Add the current line to the quotes file."
   (interactive)
-  (rms-qstr-add quotes-list-file 
+  (rms-qstr-add quotes-list-file
                (thing-at-point 'line t)))
 
-;; Change the keybindings here.
-(global-set-key (kbd "C-h C-u") 'rms-quote)
-(global-set-key (kbd "C-h C-y") 'rms-quote-add)
-
 (provide 'rms-quote)
+
+;;; rms-quote.el ends here

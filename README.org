@@ -13,10 +13,17 @@ Add the following lines to your emacs init:
 (require 'rms-quote)
 #+END_SRC
 
-NOTE: This package binds two functions to keys. Modify those lines if these bindings clash with your current setup.
+Add your personal keybindings. I use:
+
+#+BEGIN_SRC elisp
+(global-set-key (kbd "C-h C-u") 'rms-quote)
+(global-set-key (kbd "C-h C-y") 'rms-quote-add)
+#+END_SRC
 
 ** Usage
 
-=C-h C-y= to add current line to the quote list.
+Provided you've used the above keybindings
 
-=C-h C-u= to recieve a pearl of wisdom. 
+- =C-h C-y= will add current line to the quote list.
+
+- =C-h C-u= will gift you with yet another morsel of truth!
