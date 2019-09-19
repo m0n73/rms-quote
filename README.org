@@ -13,8 +13,6 @@ Add the following lines to your emacs init:
 (require 'rms-quote)
 #+END_SRC
 
-If installing with MELPA only add the =(require..)= line.
-
 Add your personal keybindings. I use:
 
 #+BEGIN_SRC elisp
