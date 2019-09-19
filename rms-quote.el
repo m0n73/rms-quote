@@ -42,7 +42,10 @@
 
 (random t)
 (setq quotes-list-file
-      "rms-quotes.list")
+      (concat 
+        (locate-dominating-file "rms-quote.el" 
+                                "rms-quotes.list")
+        "./rms-quotes.list"))
 
 (defun read-rms-quotes(path)
   "Read quotes from PATH into a list."
