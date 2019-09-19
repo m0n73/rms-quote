@@ -7,8 +7,11 @@ On-demand RMS: questionable quotes on sensitive topics.
 Place =rms-quote.el= and =rms-quotes.list= in =~/.emacs.d/rms-quote/=.
 
 Add the following lines to your emacs init:
-=(add-to-list 'load-path "~/.emacs.d/rms-quote")=
-=(require 'rms-quote)=
+
+#+BEGIN_SRC elisp
+(add-to-list 'load-path "~/.emacs.d/rms-quote")
+(require 'rms-quote)
+#+END_SRC
 
 NOTE: This package binds two functions to keys. Modify those lines if these bindings clash with your current setup.
 =C-h C-y= to add current line to the quotes.
