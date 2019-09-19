@@ -1,4 +1,4 @@
-;;;  rms-quote.el  --- get a juicy quote from RMS. -*- lexical-binding: t; -*-
+;;; rms-quote.el --- Get a random juicy quote from RMS. -*- lexical-binding: t; -*-
 
 ;;  Copyright (C) 2019 by m0nt3
 
@@ -6,7 +6,7 @@
 ;;  Created     19 Sep 2019
 ;;  Name:       rms-quote
 ;;  Version:    0.1.2
-;;  Keywords:   RMS Stallman wisdom sex parrot
+;;  Keywords:   games news
 ;;  License:    GPL v3
 ;;  URL:        https://github.com/m0n73/rms-quote
 ;;  Package-Requires: ((emacs "24.1"))
@@ -45,19 +45,19 @@
       (concat (file-name-directory load-file-name) 
               "rms-quotes.list"))
 
-(defun read-rms-quotes(path)
+(defun rms-quote-read-quotes(path)
   "Read quotes from PATH into a list."
   (with-temp-buffer
     (insert-file-contents path)
     (split-string (buffer-string) "\n" t)))
 
-(defun rms-qstr-add(path qstr)
+(defun rms-quote-qstr-add(path qstr)
   "Save QSTR into a file PATH."
   (when (y-or-n-p "Add current line to RMS quotes? ")
     (write-region qstr nil path t)))
 
 (setq rms-quotes-list
-      (read-rms-quotes quotes-list-file))
+      (rms-quote-read-quotes quotes-list-file))
 
 (defun rms-quote()
   "Enjoy another fantastic quote by RMS."
@@ -70,7 +70,7 @@
 (defun rms-quote-add()
   "Add the current line to the quotes file."
   (interactive)
-  (rms-qstr-add quotes-list-file
+  (rms-quote-qstr-add quotes-list-file
                (thing-at-point 'line t)))
 
 (provide 'rms-quote)
