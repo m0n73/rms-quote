@@ -1,0 +1,15 @@
+* rms-quote
+
+On-demand RMS: questionable quotes on sensitive topics.
+
+** Setup
+
+Place =rms-quote.el= and =rms-quotes.list= in =~/.emacs.d/rms-quote/=.
+
+Add the following lines to your emacs init:
+=(add-to-list 'load-path "~/.emacs.d/rms-quote")=
+=(require 'rms-quote)=
+
+NOTE: This package binds two functions to keys. Modify those lines if these bindings clash with your current setup.
+=C-h C-y= to add current line to the quotes.
+=C-h C-u= to enjoy yet another pearl from RMS. 
